@@ -3,7 +3,7 @@ plugins {
     id 'jacoco'
     id 'maven-publish'
     id 'signing'
-    id 'io.github.gradle-nexus.publish-plugin' version '2.0.0-rc-1'
+    id 'io.github.gradle-nexus.publish-plugin' version '2.0.0'
 }
 
 group = 'io.github.net-a-porter'
@@ -16,17 +16,28 @@ repositories {
 }
 
 dependencies {
-    api "org.springframework.boot:spring-boot-autoconfigure:3.1.2"
-    api "org.springframework.boot:spring-boot-starter-webflux:3.1.2"
-    api "org.springframework:spring-context-support:6.0.11"
-    compileOnly 'org.projectlombok:lombok:1.18.28'
-    annotationProcessor 'org.projectlombok:lombok:1.18.28'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.1.2'
-    testImplementation platform('org.junit:junit-bom:5.9.1')
+    api 'org.springframework.boot:spring-boot-autoconfigure:3.4.0'
+    api 'org.springframework.boot:spring-boot-starter-webflux:3.4.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:3.4.0'
+    implementation 'org.springframework.boot:spring-boot-starter-validation:3.4.0'
+    implementation 'org.springframework:spring-beans:6.2.0'
+    implementation 'org.springframework:spring-web:6.2.0'
+    api 'org.springframework:spring-context-support:6.2.0'
+    api 'io.netty:netty-common:4.1.115.Final'
+    api 'commons-io:commons-io:2.14.0'
+    api 'com.google.guava:guava:32.0.0-jre'
+    api 'org.bouncycastle:bcpkix-jdk18on:1.73'
+    api 'org.bouncycastle:bcprov-jdk18on:1.78'
+    api 'com.nimbusds:nimbus-jose-jwt:9.37.2'
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor:3.4.0'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:3.4.0'
+    testImplementation platform('org.junit:junit-bom:5.11.3')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     testImplementation 'org.mock-server:mockserver-junit-jupiter:5.15.0'
-    testCompileOnly 'org.projectlombok:lombok:1.18.28'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
+    testCompileOnly 'org.projectlombok:lombok:1.18.36'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
 
 test {

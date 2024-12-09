@@ -58,9 +58,7 @@ public class ProductsUpAutoConfiguration {
                 .defaultHeader("X-Auth-Token", productsUpProperties.getToken())
                 .build();
         var factory = HttpServiceProxyFactory
-                .builder(WebClientAdapter.forClient(webClient))
-                .blockTimeout(Duration.of(productsUpProperties.getTimeout(), ChronoUnit.SECONDS))
-                .build();
+                .builder().exchangeAdapter(WebClientAdapter.create(webClient)).build();
         return factory.createClient(PlatformApiClient.class);
     }
 
@@ -85,9 +83,7 @@ public class ProductsUpAutoConfiguration {
                 .defaultHeaders(httpHeaders -> httpHeaders.add(HttpHeaders.AUTHORIZATION, productsUpProperties.getAuthorizationToken()))
                 .build();
         var factory = HttpServiceProxyFactory
-                .builder(WebClientAdapter.forClient(webClient))
-                .blockTimeout(Duration.of(productsUpProperties.getTimeout(), ChronoUnit.SECONDS))
-                .build();
+                .builder().exchangeAdapter(WebClientAdapter.create(webClient)).build();
         return factory.createClient(StreamApiClient.class);
     }
 
@@ -115,9 +111,7 @@ public class ProductsUpAutoConfiguration {
                 })
                 .build();
         var factory = HttpServiceProxyFactory
-                .builder(WebClientAdapter.forClient(webClient))
-                .blockTimeout(Duration.of(productsUpProperties.getTimeout(), ChronoUnit.SECONDS))
-                .build();
+                .builder().exchangeAdapter(WebClientAdapter.create(webClient)).build();
         return factory.createClient(StreamApiUploadClient.class);
     }
 }
