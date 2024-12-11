@@ -16,14 +16,14 @@ The library is published on Maven Central. To add the library into your spring p
 <dependency>
   <groupId>io.github.net-a-porter</groupId>
   <artifactId>productsup-client-spring-boot-starter</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```
-implementation 'io.github.net-a-porter:productsup-client-spring-boot-starter:1.0.0' 
+implementation 'io.github.net-a-porter:productsup-client-spring-boot-starter:1.1.0' 
 ```
 
 ## How to use
