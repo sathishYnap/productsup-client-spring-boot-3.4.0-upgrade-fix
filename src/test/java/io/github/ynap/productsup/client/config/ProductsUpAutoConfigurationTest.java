@@ -21,7 +21,7 @@ class ProductsUpAutoConfigurationTest {
         final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
                 .withSystemProperties("productsup.token=1:1")
                 .withInitializer(new ConditionEvaluationReportLoggingListener())
-                .withUserConfiguration(ProductsUpProperties.class, ProductsUpAutoConfiguration.class);
+                .withUserConfiguration(ProductsUpAutoConfiguration.class);
 
         contextRunner
                 .run(context -> assertThat(context).hasSingleBean(PlatformApiClient.class));
@@ -43,7 +43,7 @@ class ProductsUpAutoConfigurationTest {
                         "productsup.stream.enabled=" + enabled,
                         "productsup.authorization-token=xyz")
                 .withInitializer(new ConditionEvaluationReportLoggingListener())
-                .withUserConfiguration(ProductsUpProperties.class, ProductsUpAutoConfiguration.class);
+                .withUserConfiguration(ProductsUpAutoConfiguration.class);
 
         contextRunner
                 .run(context -> assertThat(context.containsBean("streamApiClient")).isEqualTo(beanExist));

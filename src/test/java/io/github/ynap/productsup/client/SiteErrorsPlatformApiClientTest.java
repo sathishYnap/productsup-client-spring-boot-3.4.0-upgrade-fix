@@ -1,5 +1,6 @@
 package io.github.ynap.productsup.client;
 
+import io.github.ynap.productsup.client.domain.sites.errors.Data;
 import io.github.ynap.productsup.client.domain.sites.errors.Error;
 import org.junit.jupiter.api.Test;
 import org.mockserver.client.MockServerClient;
@@ -45,7 +46,7 @@ class SiteErrorsPlatformApiClientTest extends BasePlatformApiClient {
                                                              "rate": 19
                                                          },
                                                          "Filetime": "2023-08-13 09:01:47",
-                                                         "Datasource": "https://server/products.csv",
+                                                         "dataSource": "https://server/products.csv",
                                                          "Unchanged Runs": 19,
                                                          "Setup": "https://platform.productsup.com/configure-dataflow/123/import-edit/123"
                                                      },
@@ -77,9 +78,7 @@ class SiteErrorsPlatformApiClientTest extends BasePlatformApiClient {
                         Map.of("self", "http://platform-api.productsup.com/platform/v2/errors/2323232323"),
                         Map.of("site", "http://platform-api.productsup.com/platform/v2/sites/23232323")
                 ), from(Error::links));
-        assertThatIterable(errors.errors())
-                .first()
-                .usingRecursiveComparison()
-                .comparingOnlyFields("dataSource").isEqualTo("https://server/products.csv");
+        assertThatIterable(errors.errors()).first().extracting(Error::data).extracting(Data::dataSource)
+                .isEqualTo("https://server/products.csv");
     }
 }
